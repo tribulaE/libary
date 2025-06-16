@@ -7,8 +7,21 @@
     <link rel="stylesheet" href="p.css">
 </head>
 <body>
-    
-    
+    <button id="new-book-btn"> New Book</button>
+    <dialog id="book-dialog">
+    <form id="book-form">
+        <input type="text" name="title" placeholder="Title" required>
+        <input type="text" name="author" placeholder="Author" required>
+        <input type="number" name="pages" placeholder="Pages" required>
+    <label>
+        <input type="checkbox" name="read">
+        Read
+    </label>
+    <button type="submit">Add Book</button>
+    </form>
+</dialog>
+
+<div id="book-container"></div>
     <script src="java.js"></script>
 </body>
 </html>

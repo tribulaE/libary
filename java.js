@@ -1,4 +1,10 @@
+const myLibrary = [];
+
+
+
+
 function Book(title, author, pages, read) {
+    this.id = crypto.randomUUID();
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -10,6 +16,9 @@ function Book(title, author, pages, read) {
     }
 }
 
-const theHobbit = new Book('The Hobbit', "J.R.R Tolkien", 295, false);
 
-console.log(theHobbit.info())
+function addBookToLibrary() {
+    return new Book("Nate", "Evans", 300, true)
+}
+
+console.log(myLibrary)

@@ -1,8 +1,6 @@
 const myLibrary = [];
 
 
-
-
 function Book(title, author, pages, read) {
     this.id = crypto.randomUUID();
     this.title = title;
@@ -16,9 +14,12 @@ function Book(title, author, pages, read) {
     }
 }
 
+    Book.prototype.toggleRead = function() {
+        this.read = !this.read
+    }
 
-function addBookToLibrary() {
-    return new Book("Nate", "Evans", 300, true)
-}
-
-console.log(myLibrary)
+    function addBookToLibary (title, author, pages, read) {
+        const newBook = new Book(title, author, pages, read);
+        myLibrary.push(newBook)
+        displayBooks();
+    }

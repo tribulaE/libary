@@ -30,15 +30,15 @@ function Book(title, author, pages, read) {
 
         myLibrary.forEach(book => {
             const bookCard = document.createElement("div");
-            bookCard.classList.add("book-card")
-            bookCard.dataset.id = book.id;
+            card.classList.add("book-card")
+            card.dataset.id = book.id;
 
 
-            bookCard.innerHTML = `
+           card.innerHTML = `
             <h3>${book.title}</h3>
-            <p>by ${book.author}</p>
-            <p>${book.pages} pages</p>
-            <p>${book.read ? "Read" : "Not read yet"}</p>
+            <p>Author: ${book.author}</p>
+            <p>Pages: ${book.pages} pages</p>
+            <p>Status: ${book.read ? "Read" : "Not read yet"}</p>
             <button class="remove-btn>Remove</button>
             <button class="toggle-read-btn">Toggle Read</button
             `;
@@ -59,4 +59,13 @@ function Book(title, author, pages, read) {
                 toggleReadStatus(id)
             });
         });
+    }
+
+    function removeBook(id) {
+        const index = myLibrary.findIndex((book) => book.id === id);
+
+        if(index !== -1) {
+            myLibrary.splice(index, 1);
+            displayBooks();
+        }
     }

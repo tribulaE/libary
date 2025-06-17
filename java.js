@@ -44,5 +44,19 @@ function Book(title, author, pages, read) {
             `;
 
             container.appendChild(bookCard)
-        })
-        }
+        });
+
+        document.querySelectorAll(".remove-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const id = e.target.parentElement.dataset.id;
+                removeBook(id);
+            });
+        });
+
+        document.querySelectorAll("toggle-btn").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                const id = e.target.parentElement.dataset.id
+                toggleReadStatus(id)
+            });
+        });
+    }

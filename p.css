@@ -1,0 +1,49 @@
+body {
+    background-color: darkgray;
+}
+
+
+#search-bar {
+    margin: 20px 0;
+    padding: 8px;
+    width: 60%;
+    max-width: 400px;
+}
+
+#new-book-btn {
+    margin: 10px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+
+#book-container {
+    display: flex;
+    flex: wrap;
+    gap: 24px;
+    padding: 20px;
+}
+
+#featured-book {
+    margin-bottom: 40px;
+}
+
+.book-card {
+    width: 220px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.book-card button {
+    margin: 5px 4px 0;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#user-libary {
+    margin-top: 40px;
+}

@@ -1,8 +1,12 @@
- let searchTerm = ""; 
 
+/* Filtering books by title*/
+let searchTerm = ""; 
+
+
+/* Array to store all added book objects*/
 const myLibrary = [];
 
-
+// Function for creating Book objects
 function Book(title, author, pages, read) {
     this.id = crypto.randomUUID();
     this.title = title;
@@ -15,24 +19,25 @@ function Book(title, author, pages, read) {
         return  `${this. title} by ${this.author}, ${this.pages} pages, ${readStatus}`
     }
 }
-
+    // Protype methid to toggle the read status of a book
     Book.prototype.toggleRead = function() {
         this.read = !this.read
     }
-
+    // Function to create a new book and add it to the libary
     function addBookToLibrary(title, author, pages, read) {
         const newBook = new Book(title, author, pages, read);
         myLibrary.push(newBook)
-        displayBooks();
+        displayBooks();  
     }
 
+    // Function to display all books in the library on the page
     function displayBooks() {
         const container = document.getElementById("book-container");
         container.innerHTML = "";
 
 
         
-
+    // Filter books by search tterm and render them
         myLibrary 
         .filter(book => book.title.toLowerCase().includes(searchTerm.toLowerCase()))
         .forEach(book => {
@@ -53,6 +58,7 @@ function Book(title, author, pages, read) {
             container.appendChild(bookCard)
         });
 
+    // Add event listeners to the buttons
         document.querySelectorAll(".remove-btn").forEach((btn) => {
             btn.addEventListener("click", (e) => {
                 const id = e.target.parentElement.dataset.id;
@@ -68,6 +74,7 @@ function Book(title, author, pages, read) {
         });
     }
 
+    // Remove a book from the library by ID
     function removeBook(id) {
         const index = myLibrary.findIndex((book) => book.id === id);
 
@@ -81,6 +88,7 @@ function Book(title, author, pages, read) {
         this.read = !this.read;
     };
 
+    // Toggle the read status for a specific book
     function toggleReadStatus(id) {
         const book = myLibrary.find((b) => b.id === id);
 
@@ -90,6 +98,7 @@ function Book(title, author, pages, read) {
         }
     }
 
+    // Display up to 5 featured books fromn the Gooogle Books API
     function displayFeaturedBooks(bookArray) {
         const featured = document.getElementById("featured-book");
         featured.innerHTML = "";
@@ -114,6 +123,7 @@ function Book(title, author, pages, read) {
             const thumbnail = book.imageLinks?.thumbnail || "";
 
 
+            // Created a visual card for each featured book
             const card = document.createElement("div");
             card.style.cssText = `
             border: 2px solid #ccc;
@@ -138,6 +148,7 @@ function Book(title, author, pages, read) {
         featured.appendChild(container)
     }
 
+    // Fetch books from Google Books API and show 5 random one
     function fetchRandomFeaturedBooks() {
         const topics = ["fiction", "coding", "science", "fantasy", "history"];
         const randomTopic = topics[Math.floor(Math.random() * topics.length)];
@@ -165,7 +176,7 @@ function Book(title, author, pages, read) {
     
     
     
-    
+    // DOM event to handle form input and modal
     document.addEventListener("DOMContentLoaded", () => {
         const newBookBtn = document.getElementById("new-book-btn")
         const dialog = document.getElementById("book-dialog")
@@ -175,6 +186,7 @@ function Book(title, author, pages, read) {
             dialog.showModal();
         });
 
+        // Handle form submission
         form.addEventListener("submit", (e) => {
             e.preventDefault();
 
@@ -191,7 +203,7 @@ function Book(title, author, pages, read) {
         })
         fetchRandomFeaturedBooks();
     })
-
+    // Input listener for live search filtering
     const searchInput = document.getElementById("search-bar");
     searchInput .addEventListener("input", (e) => {
         searchTerm = e.target.value;
